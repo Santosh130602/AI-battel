@@ -1,0 +1,154 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /* ==========================================================================
+     1. LIGHT THEME (Minimal, Royal Pinkish, Elegant Accent)
+     ========================================================================== */
+  :root, .light {
+    --bg-main: #fbf8f9;         /* Very soft, clean pinkish white */
+    --bg-surface: #ffffff;      /* Pure white for cards and floating panels */
+    --bg-surface-hover: #fdf2f4; /* Subtle pink hue on hover */
+    
+    --border-color: #f3e6e8;    /* Delicate pinkish-grey border */
+    --border-accent: #f472b6;   /* Playful pink edge */
+
+    --text-primary: #2d161a;    /* Deep burgundy/brown-black for readable text */
+    --text-secondary: #6b4e54;  /* Muted rose-brown for descriptions */
+    --text-muted: #a78b90;      /* Soft ash-rose for labels and character counts */
+
+    --color-accent: #db2777;    /* Royal Pink / Deep Magenta */
+    --color-accent-secondary: #f472b6; /* Lighter pink for auxiliary elements */
+    
+    --color-success: #10b981;   /* Emerald green for success/submitted states */
+    --color-danger: #ef4444;    /* Crimson for danger/errors */
+    --color-pending: #3b82f6;   /* Royal blue for AI generation cues */
+    
+    --shadow-sm: 0 2px 8px -2px rgba(219, 39, 119, 0.05);
+    --shadow-md: 0 10px 25px -5px rgba(219, 39, 119, 0.08);
+  }
+
+  /* ==========================================================================
+     2. DARK THEME (Premium Greenish-Black / Midnight Forest)
+     ========================================================================== */
+  .dark {
+    --bg-main: #0b0f0e;         /* Deep, deep greenish-black */
+    --bg-surface: #121816;      /* Rich dark forest surface for components */
+    --bg-surface-hover: #19221f; /* Slightly lighter tone on hover */
+    
+    --border-color: #1f2c27;    /* Deep forest-tinted borders */
+    --border-accent: #10b981;   /* Emerald edge accent */
+
+    --text-primary: #f0fdf4;    /* Minty-white crisp text */
+    --text-secondary: #94a3b8;  /* Cool slate-grey for descriptions */
+    --text-muted: #64748b;      /* Darker slate for helper text */
+
+    --color-accent: #10b981;    /* Vibrant Emerald */
+    --color-accent-secondary: #34d399; /* Light mint green */
+    
+    --color-success: #10b981;   
+    --color-danger: #f87171;    
+    --color-pending: #60a5fa;   
+
+    --shadow-sm: 0 2px 8px -2px rgba(0, 0, 0, 0.5);
+    --shadow-md: 0 12px 30px -10px rgba(0, 0, 0, 0.7);
+  }
+
+  /* Global baseline assignments */
+  body {
+    background-color: var(--bg-main);
+    color: var(--text-primary);
+    transition: background-color 0.3s ease, color 0.3s ease;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  }
+}
+
+/* ==========================================================================
+   3. REUSABLE COMPONENT CLASSES (Tailwind Bridge)
+   ========================================================================== */
+@layer components {
+  /* Cards & Containers */
+  .card {
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+    box-shadow: var(--shadow-md);
+    transition: all 0.2s ease-in-out;
+  }
+
+  /* Inputs & Interactive Fields */
+  .input {
+    width: 100%;
+    background-color: var(--bg-main);
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+    border-radius: 0.5rem;
+    padding: 0.75rem 1rem;
+    outline: none;
+    transition: all 0.2s ease;
+  }
+  .input:focus {
+    border-color: var(--color-accent);
+    box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.15);
+  }
+  .input:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+
+  /* Standard Labels */
+  .label {
+    display: block;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    margin-bottom: 0.5rem;
+  }
+
+  /* Core UI Button Templates */
+  .btn-primary {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 0.937rem;
+    border-radius: 0.5rem;
+    padding: 0.75rem 1.25rem;
+    background-color: var(--color-accent);
+    color: #ffffff !important; /* Always white for readability over accent solid backgrounds */
+    transition: all 0.2s ease;
+  }
+  .btn-primary:hover:not(:disabled) {
+    opacity: 0.9;
+    transform: translateY(-1px);
+  }
+  .btn-primary:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+
+  .btn-danger {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 0.937rem;
+    border-radius: 0.5rem;
+    padding: 0.75rem 1.25rem;
+    background-color: var(--color-danger);
+    color: #ffffff !important;
+    transition: all 0.2s ease;
+  }
+  .btn-danger:hover:not(:disabled) {
+    opacity: 0.9;
+  }
+  
+  /* Utilities for mapping raw components safely */
+  .bg-surface { background-color: var(--bg-surface); }
+  .border-border { border-color: var(--border-color); }
+  .text-text-secondary { color: var(--text-secondary); }
+  .text-text-muted { color: var(--text-muted); }
+  .text-accent { color: var(--color-accent); }
+}
