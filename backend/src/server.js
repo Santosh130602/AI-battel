@@ -4,6 +4,14 @@ const app = require('./app');
 const { initSocket } = require('./socket/socketManager');
 const connectDB = require('./db');
 
+
+const cors = require('cors');
+
+app.use(cors({
+  origin: ['https://ai-battel.vercel.app', 'http://localhost:5173'],
+  credentials: true
+}));
+
 const PORT = process.env.PORT || 4000;
 
 const server = http.createServer(app);
